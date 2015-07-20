@@ -2,11 +2,11 @@
 
 A MySQL-Driver for Go's [database/sql](http://golang.org/pkg/database/sql) package
 
-![Go-MySQL-Driver logo](https://raw.github.com/wiki/go-sql-driver/mysql/gomysql_m.png "Golang Gopher holding the MySQL Dolphin")
+![Go-MySQL-Driver logo](https://raw.github.com/wiki/zhgo/mysql/gomysql_m.png "Golang Gopher holding the MySQL Dolphin")
 
-**Latest stable Release:** [Version 1.2 (June 03, 2014)](https://github.com/go-sql-driver/mysql/releases)
+**Latest stable Release:** [Version 1.2 (June 03, 2014)](https://github.com/zhgo/mysql/releases)
 
-[![Build Status](https://travis-ci.org/go-sql-driver/mysql.png?branch=master)](https://travis-ci.org/go-sql-driver/mysql)
+[![Build Status](https://travis-ci.org/zhgo/mysql.png?branch=master)](https://travis-ci.org/zhgo/mysql)
 
 ---------------------------------------
   * [Features](#features)
@@ -49,7 +49,7 @@ A MySQL-Driver for Go's [database/sql](http://golang.org/pkg/database/sql) packa
 ## Installation
 Simple install the package to your [$GOPATH](http://code.google.com/p/go-wiki/wiki/GOPATH "GOPATH") with the [go tool](http://golang.org/cmd/go/ "go command") from shell:
 ```bash
-$ go get github.com/go-sql-driver/mysql
+$ go get github.com/zhgo/mysql
 ```
 Make sure [Git is installed](http://git-scm.com/downloads) on your machine and in your system's `PATH`.
 
@@ -59,7 +59,7 @@ _Go MySQL Driver_ is an implementation of Go's `database/sql/driver` interface. 
 Use `mysql` as `driverName` and a valid [DSN](#dsn-data-source-name)  as `dataSourceName`:
 ```go
 import "database/sql"
-import _ "github.com/go-sql-driver/mysql"
+import _ "github.com/zhgo/mysql"
 
 db, err := sql.Open("mysql", "user:password@/dbname")
 ```
@@ -262,7 +262,7 @@ Valid Values:   true, false, skip-verify, <name>
 Default:        false
 ```
 
-`tls=true` enables TLS / SSL encrypted connection to the server. Use `skip-verify` if you want to use a self-signed or invalid certificate (server side). Use a custom value registered with [`mysql.RegisterTLSConfig`](http://godoc.org/github.com/go-sql-driver/mysql#RegisterTLSConfig).
+`tls=true` enables TLS / SSL encrypted connection to the server. Use `skip-verify` if you want to use a self-signed or invalid certificate (server side). Use a custom value registered with [`mysql.RegisterTLSConfig`](http://godoc.org/github.com/zhgo/mysql#RegisterTLSConfig).
 
 
 ##### System Variables
@@ -326,14 +326,14 @@ user:password@/
 ### `LOAD DATA LOCAL INFILE` support
 For this feature you need direct access to the package. Therefore you must change the import path (no `_`):
 ```go
-import "github.com/go-sql-driver/mysql"
+import "github.com/zhgo/mysql"
 ```
 
 Files must be whitelisted by registering them with `mysql.RegisterLocalFile(filepath)` (recommended) or the Whitelist check must be deactivated by using the DSN parameter `allowAllFiles=true` ([*Might be insecure!*](http://dev.mysql.com/doc/refman/5.7/en/load-data-local.html)).
 
 To use a `io.Reader` a handler function must be registered with `mysql.RegisterReaderHandler(name, handler)` which returns a `io.Reader` or `io.ReadCloser`. The Reader is available with the filepath `Reader::<name>` then.
 
-See the [godoc of Go-MySQL-Driver](http://godoc.org/github.com/go-sql-driver/mysql "golang mysql driver documentation") for details.
+See the [godoc of Go-MySQL-Driver](http://godoc.org/github.com/zhgo/mysql "golang mysql driver documentation") for details.
 
 
 ### `time.Time` support
@@ -343,7 +343,7 @@ However, many want to scan MySQL `DATE` and `DATETIME` values into `time.Time` v
 
 **Caution:** As of Go 1.1, this makes `time.Time` the only variable type you can scan `DATE` and `DATETIME` values into. This breaks for example [`sql.RawBytes` support](https://github.com/go-sql-driver/mysql/wiki/Examples#rawbytes).
 
-Alternatively you can use the [`NullTime`](http://godoc.org/github.com/go-sql-driver/mysql#NullTime) type as the scan destination, which works with both `time.Time` and `string` / `[]byte`.
+Alternatively you can use the [`NullTime`](http://godoc.org/github.com/zhgo/mysql#NullTime) type as the scan destination, which works with both `time.Time` and `string` / `[]byte`.
 
 
 ### Unicode support
@@ -360,14 +360,14 @@ See http://dev.mysql.com/doc/refman/5.7/en/charset-unicode.html for more details
 To run the driver tests you may need to adjust the configuration. See the [Testing Wiki-Page](https://github.com/go-sql-driver/mysql/wiki/Testing "Testing") for details.
 
 Go-MySQL-Driver is not feature-complete yet. Your help is very appreciated.
-If you want to contribute, you can work on an [open issue](https://github.com/go-sql-driver/mysql/issues?state=open) or review a [pull request](https://github.com/go-sql-driver/mysql/pulls).
+If you want to contribute, you can work on an [open issue](https://github.com/zhgo/mysql/issues?state=open) or review a [pull request](https://github.com/zhgo/mysql/pulls).
 
-See the [Contribution Guidelines](https://github.com/go-sql-driver/mysql/blob/master/CONTRIBUTING.md) for details.
+See the [Contribution Guidelines](https://github.com/zhgo/mysql/blob/master/CONTRIBUTING.md) for details.
 
 ---------------------------------------
 
 ## License
-Go-MySQL-Driver is licensed under the [Mozilla Public License Version 2.0](https://raw.github.com/go-sql-driver/mysql/master/LICENSE)
+Go-MySQL-Driver is licensed under the [Mozilla Public License Version 2.0](https://raw.github.com/zhgo/mysql/master/LICENSE)
 
 Mozilla summarizes the license scope as follows:
 > MPL: The copyleft applies to any files containing MPLed code.
@@ -380,7 +380,7 @@ That means:
 
 Please read the [MPL 2.0 FAQ](http://www.mozilla.org/MPL/2.0/FAQ.html) if you have further questions regarding the license.
 
-You can read the full terms here: [LICENSE](https://raw.github.com/go-sql-driver/mysql/master/LICENSE)
+You can read the full terms here: [LICENSE](https://raw.github.com/zhgo/mysql/master/LICENSE)
 
-![Go Gopher and MySQL Dolphin](https://raw.github.com/wiki/go-sql-driver/mysql/go-mysql-driver_m.jpg "Golang Gopher transporting the MySQL Dolphin in a wheelbarrow")
+![Go Gopher and MySQL Dolphin](https://raw.github.com/wiki/zhgo/mysql/go-mysql-driver_m.jpg "Golang Gopher transporting the MySQL Dolphin in a wheelbarrow")
 
